@@ -62,18 +62,15 @@
         />
         <div class="d-flex justify-content-between"></div>
       </div>
-      <button type="submit" 
-      @click.stop.prevent="handleSubmit"
-      class="btn btn-bg btn-356-50 w-100 mb-3">
+      <button
+        type="submit"
+        @click.stop.prevent="handleSubmit"
+        class="btn btn-bg btn-356-50 w-100 mb-3"
+      >
         註冊
       </button>
       <div class="text-center mb-5">
-        <a
-          to="/login"
-          class="mx-auto text-blue"
-          @click.stop.prevent="handleCancel"
-          >取消重填
-        </a>
+        <router-link to="/login" class="mx-auto text-blue">取消 </router-link>
       </div>
     </form>
   </div>
@@ -91,18 +88,17 @@ export default {
     };
   },
   methods: {
-    handleCancel() {
-      this.account = "";
-      this.name = "";
-      this.email = "",
-      this.password = "";
-      this.passwordCheck = "";
-    },
     handleSubmit() {
       // todo: 串接後端，將註冊的資料送到後端
       // todo: 若有未正確填寫的，要跳出提示框
-      if (!this.account || !this.name || !this.email || !this.password || !this.passwordCheck) {
-        console.log('請確實填寫每一個欄位')
+      if (
+        !this.account ||
+        !this.name ||
+        !this.email ||
+        !this.password ||
+        !this.passwordCheck
+      ) {
+        console.log("請確實填寫每一個欄位");
         return;
       }
       //註冊成功，跳回登入頁
