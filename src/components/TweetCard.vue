@@ -186,43 +186,12 @@ export default {
   column-gap: 0.5rem;
 }
 
-/* card footer: reply & like icons and counter */
-.card-footer {
-  margin-top: 9px;
-  display: flex;
-  column-gap: 2.58rem;
-}
-
-.icon-section {
-  display: flex;
-  column-gap: 9px;
-}
-
-.footer-icon {
-  width: 1rem;
-  height: 1rem;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-  cursor: pointer;
-}
-
+/* card footer: reply & like icons  */
 .reply-icon {
   background-image: url("./../assets/pictures/reply.png");
 }
 
 .like-icon {
   background-image: url("./../assets/pictures/like.png");
-}
-
-.icon-section:hover {
-  filter: brightness(0) saturate(100%) invert(38%) sepia(52%) saturate(2219%)
-    hue-rotate(2deg) brightness(107%) contrast(105%);
-}
-
-.counter {
-  color: var(--secondary-color);
-  font-size: 0.875rem;
-  font-weight: 600;
 }
 </style>
