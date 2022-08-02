@@ -39,6 +39,23 @@ const routes = [
     component: () => import('../views/UserFollows.vue')
   },
   {
+    path: '/admin/tweets',
+    name: 'admin-tweets',
+    component: () => import('../views/AdminMain.vue'),
+    children: [
+      {
+        path: '/admin/tweets',
+        name: 'admin-tweets',
+        component: () => import('../components/AdminTweetList.vue'),
+      },
+      {
+        path: '/admin/users',
+        name: 'admin-users',
+        component: () => import('../components/AdminUserList.vue')
+      }
+    ]
+  },
+  {
     path: '/admin',
     name: 'admin-login',
     component: () => import('../views/AdminLogin.vue')
@@ -56,6 +73,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
+  linkExactActiveClass: 'active',
   routes
 })
 
