@@ -11,8 +11,7 @@
     "axios": "^0.19.2",
     "bootstrap": "^5.2.0",
     "core-js": "^3.6.5",
-    "moment": "^2.24.0",
-    "sweetalert2": "^11.4.24",
+    "sweetalert2": "^9.8.2",
     "vue": "^2.6.11",
     "vue-router": "^3.5.1",
     "vuex": "^3.6.2"
@@ -26,6 +25,8 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-vue": "^6.2.2",
+    "node-sass": "^5.0.0",
+    "sass-loader": "^10.1.1",
     "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {

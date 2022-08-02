@@ -5,12 +5,12 @@ import './../src/assets/css/reset.css'
 import './../src/assets/css/color.css'
 import './../src/assets/css/basic.css'
 import './../src/assets/css/typography.css'
-import store from './store'
+// import store from './store'
 
 Vue.config.productionTip = false
 
 new Vue({
   router,
-  store,
+  // store,
   render: h => h(App)
 }).$mount('#app')
