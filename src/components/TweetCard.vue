@@ -194,4 +194,15 @@ export default {
 .like-icon {
   background-image: url("./../assets/pictures/like.png");
 }
+
+.icon-section:hover {
+  filter: brightness(0) saturate(100%) invert(38%) sepia(52%) saturate(2219%)
+    hue-rotate(2deg) brightness(107%) contrast(105%);
+}
+
+.counter {
+  color: var(--secondary-color);
+  font-size: 0.875rem;
+  font-weight: 600;
+}
 </style>
