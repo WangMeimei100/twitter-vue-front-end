@@ -35,7 +35,9 @@
               </div>
               <div class="card-footer">
                 <div class="link-line"></div>
-                <p class="user-handle">回覆給 <span class="user-name-highlight">@apple</span></p>
+                <p class="user-handle">
+                  回覆給 <span class="user-name-highlight">@apple</span>
+                </p>
               </div>
             </div>
           </div>
@@ -77,6 +79,11 @@ export default {
   props: {
     // 從 Main.vue 或 Reply.vue 傳來
     show: Boolean,
+    // 從 UserTweets.vue 傳來
+    tweet: {
+      type: [Array, Object],
+      // required: true,
+    },
   },
   data() {
     return {
@@ -97,6 +104,16 @@ export default {
       console.log(content);
       // TODO：發送 POST api/tweets/:tweet_id/replies
       // TODO：傳送過程 isProcessing = true 以暫時 disable 按鈕，防止重複發回覆
+
+      // tweet list
+      this.$emit('after-reply-submit', 
+      console.log('success')
+      // {
+        
+      //   tweetId: this.tweet.id,
+      //   replyCount: this.tweet.replyCount + 1,
+      // }
+      )
     },
     clearErrorMessage() {
       this.errorMessage = "";
