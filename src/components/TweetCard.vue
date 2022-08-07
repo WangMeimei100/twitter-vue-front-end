@@ -163,6 +163,6 @@ export default {
 }
 
 .like-icon[active] {
-  background-image: url("./../assets/pictures/icon_like.png");
+  background-image: url("./../assets/pictures/icon-like.png");
 }
 </style>

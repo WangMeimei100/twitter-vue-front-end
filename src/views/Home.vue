@@ -27,10 +27,7 @@
       @close="toggleTweetModal(false)"
       @after-tweet-submit="afterTweetSubmit"
     />
-    <ReplyModal
-      :show="showReplyModal"
-      @close="toggleReplyModal(false)"
-    />
+    <ReplyModal :show="showReplyModal" @close="toggleReplyModal(false)" />
   </div>
 </template>
 
@@ -93,8 +90,8 @@ export default {
       this.fetchTweets();
     },
     afterLikeClicked() {
-      console.log("TODO: fetch 該則 tweet 的 likeCount")
-    }
+      console.log("TODO: fetch 該則 tweet 的 likeCount");
+    },
   },
   computed: {
     ...mapState(["currentUser"]),
