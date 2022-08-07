@@ -14,7 +14,12 @@
             <div class="modal-title">編輯個人資料</div>
           </div>
           <!-- todo: save button -->
-          <button class="save-btn btn-bg btn-border">儲存</button>
+          <button
+            @submit.stop.prevent="handleSubmit"
+            class="save-btn btn-bg btn-border"
+          >
+            儲存
+          </button>
         </div>
 
         <div class="profile-wrapper position-relative">
@@ -33,7 +38,10 @@
           <div class="bg-mask banner-mask"></div>
 
           <div class="person-img">
-            <label for="avatar-image" class="avatar-icon avatar-change-photo"></label>
+            <label
+              for="avatar-image"
+              class="avatar-icon avatar-change-photo"
+            ></label>
             <img
               class="avatar-img rounded-circle position-absolute"
               src="./../assets/pictures/dummyUser2.png"
@@ -52,16 +60,20 @@
                 type="text"
                 name="name"
                 id="name"
+                
+                v-model="currentUser.name"
                 placeholder="Joe Doe"
                 required
               />
             </div>
+
             <div class="form-input form-introduction d-flex flex-column">
               <label for="introduction" class="form-input-text">自我介紹</label>
               <input
                 type="text"
                 name="introduction"
                 id="introduction"
+                v-model="currentUser.introduction"
                 placeholder="Joe Doe"
                 required
               />
@@ -75,6 +87,7 @@
 
 <script>
 import { emptyImageFilter } from "./../utils/mixins";
+import { mapState } from "vuex";
 
 export default {
   name: "UserEditModal",
@@ -83,11 +96,79 @@ export default {
   props: {
     // 從 Home.vue 傳來
     show: Boolean,
+  }, 
+  //  data() {
+  //   return {
+  //     user: {
+  //       id: this.currentUser.id,
+  //       name: this.currentUser.name,
+  //       account: this.currentUser.account,
+  //       avatar: this.currentUser.avatar,
+  //       banner: this.currentUser.banner,
+  //       introduction: this.currentUser.introduction,
+  //     },
+  //   };
+  // },
+  computed: {
+    // 從 Vuex 取得 currentUser 的資料
+    ...mapState(["currentUser"]),
+    // nameLength: {
+    //   get: function () {
+    //     const length = this.user.name.length;
+    //     return length;
+    //   },
+    //   set: function (newValue) {
+    //     this.nameLength = newValue;
+    //   },
+    // },
+    // introLength: {
+    //   get: function () {
+    //     const length = this.user.introduction.length;
+    //     return length;
+    //   },
+    //   set: function (newValue) {
+    //     this.introLength = newValue;
+    //   },
+    // },
   },
+  // methods: {
+  //   // ===
+  //   async handleSubmit(e) {
+  //     try {
+  //       if (this.namelength > 50 || this.introduction > 160) {
+  //         this.saveInvalid = true;
+  //         return;
+  //       }
+  //       const formData = new FormData(e.target);
+  //       // console.log([...formData.entries()])
+  //       const { data } = await userAPI.updateUser({
+  //         userId: this.user.id,
+  //         formData,
+  //       });
+  //       // console.log(data);
+  //       const formDataTrans = {
+  //         name: data.data.name,
+  //         avatar: data.data.avatar,
+  //         cover: data.data.cover,
+  //         introduction: data.data.introduction,
+  //       };
+  //       this.$emit("after-profile-submit", formDataTrans);
+  //     } catch (error) {
+  //       console.log(error.response);
+  //     }
+  //   },
+  // }
 };
 </script>
 
 <style scoped>
+.form-input-warn {
+  border-bottom: 2px solid #fc5a5a;
+}
+.word-count-warn,
+.warning {
+  color: #fc5a5a;
+}
 
 .modal-container {
   min-width: 634px;
@@ -134,7 +215,8 @@ export default {
 }
 
 /* banner、avatar icon(change-photo、cancel) */
-.banner-icon, .avatar-icon {
+.banner-icon,
+.avatar-icon {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -190,5 +272,4 @@ export default {
   background-color: rgba(23, 23, 37, 0.5);
   border-radius: 50%;
 }
-
 </style>
