@@ -58,11 +58,13 @@ export default {
   created() {
     // 取得動態路由位置
     const { id: userId } = this.$route.params;
+    this.fetchUserTweets(userId);
     this.fetchUserProfile(userId);
   },
   // 追蹤路由變化
   beforeRouteUpdate(to, from, next) {
     const { id } = to.params;
+    this.fetchUserTweets(id);
     this.fetchUserProfile(id);
     next();
   },
