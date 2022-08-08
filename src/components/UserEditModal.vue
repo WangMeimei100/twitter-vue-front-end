@@ -17,7 +17,9 @@
             class="save-btn btn-bg btn-border"
             @click.prevent.stop="handleEditModalSubmit"
             :disabled="isProcessing"
-          >
+          <button
+            @submit.stop.prevent="handleSubmit"
+            class="save-btn btn-bg btn-border">
             儲存
           </button>
         </div>
@@ -94,6 +96,8 @@
                 v-model="tempUserName"
                 @input="isNameInvalid = false"
                 :placeholder="currentUser.name"
+                v-model="currentUser.name"
+                placeholder="Joe Doe"
                 required
               />
               <span v-if="isNameInvalid" class="error-message mx-3"
@@ -101,6 +105,8 @@
               >
             </div>
             <div class="form-input form-introduction d-flex">
+
+            <div class="form-input form-introduction d-flex flex-column">
               <label for="introduction" class="form-input-text">自我介紹</label>
               <input
                 type="text"
@@ -110,6 +116,8 @@
                 v-model="tempUserIntro"
                 @input="isIntroTooLong = false"
                 :placeholder="currentUser.introduction"
+                v-model="currentUser.introduction"
+                placeholder="Joe Doe"
                 required
               />
               <span v-if="isIntroTooLong" class="error-message mx-3"
@@ -135,7 +143,42 @@ export default {
   props: {
     // 從 User.vue 傳來
     show: Boolean,
+  }, 
+  //  data() {
+  //   return {
+  //     user: {
+  //       id: this.currentUser.id,
+  //       name: this.currentUser.name,
+  //       account: this.currentUser.account,
+  //       avatar: this.currentUser.avatar,
+  //       banner: this.currentUser.banner,
+  //       introduction: this.currentUser.introduction,
+  //     },
+  //   };
+  // },
+  computed: {
+    // 從 Vuex 取得 currentUser 的資料
+    ...mapState(["currentUser"]),
+    // nameLength: {
+    //   get: function () {
+    //     const length = this.user.name.length;
+    //     return length;
+    //   },
+    //   set: function (newValue) {
+    //     this.nameLength = newValue;
+    //   },
+    // },
+    // introLength: {
+    //   get: function () {
+    //     const length = this.user.introduction.length;
+    //     return length;
+    //   },
+    //   set: function (newValue) {
+    //     this.introLength = newValue;
+    //   },
+    // },
   },
+<<<<<<< HEAD
   data() {
     return {
       tempUserName: "",
@@ -240,10 +283,47 @@ export default {
       this.tempUserBanner = "";
     },
   },
+=======
+  // methods: {
+  //   // ===
+  //   async handleSubmit(e) {
+  //     try {
+  //       if (this.namelength > 50 || this.introduction > 160) {
+  //         this.saveInvalid = true;
+  //         return;
+  //       }
+  //       const formData = new FormData(e.target);
+  //       // console.log([...formData.entries()])
+  //       const { data } = await userAPI.updateUser({
+  //         userId: this.user.id,
+  //         formData,
+  //       });
+  //       // console.log(data);
+  //       const formDataTrans = {
+  //         name: data.data.name,
+  //         avatar: data.data.avatar,
+  //         cover: data.data.cover,
+  //         introduction: data.data.introduction,
+  //       };
+  //       this.$emit("after-profile-submit", formDataTrans);
+  //     } catch (error) {
+  //       console.log(error.response);
+  //     }
+  //   },
+  // }
+>>>>>>> origin/api-feature-User-b
 };
 </script>
 
 <style scoped>
+.form-input-warn {
+  border-bottom: 2px solid #fc5a5a;
+}
+.word-count-warn,
+.warning {
+  color: #fc5a5a;
+}
+
 .modal-container {
   min-width: 634px;
   height: 50%;
@@ -383,5 +463,4 @@ export default {
 .banner-preview {
   z-index: 66;
 }
-
 </style>
