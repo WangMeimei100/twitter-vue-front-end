@@ -61,7 +61,7 @@ Development Dependencies
 
 ### Clone the project
 ```
-git clone https://github.com/querlemtle/twitter-vue-front-end.git
+git clone https://github.com/WangMeimei100/twitter-vue-front-end.git
 ```
 
 ### Project setup
